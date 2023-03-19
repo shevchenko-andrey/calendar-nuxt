@@ -7,4 +7,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  buildModules: ["@nuxtjs/date-fns"],
 });
