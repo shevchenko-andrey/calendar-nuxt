@@ -6,7 +6,11 @@ import {
   endOfWeek,
   format,
 } from "date-fns";
-import { DateFormats } from "~~/enums/dateFormats";
+
+import { utcToZonedTime } from "date-fns-tz";
+import { DateFormats } from "@/utils/enums/dateFormats";
+
+export const formatToLondonTime = (date: Date) => utcToZonedTime(date, "Europe/London");
 
 export const createDaysOfCalendar = (selectedDay: Date) => {
   const daysOfCalendar = eachDayOfInterval({
@@ -21,4 +25,13 @@ export const createDaysOfWeek = (selectedDay: Date) => {
     start: startOfWeek(selectedDay),
     end: endOfWeek(selectedDay),
   }).map((day) => format(day, DateFormats.DAY_OF_WEEK));
+};
+
+export const formatMeetDate = (from: Date, to: Date) => {
+  const yearOfMeet = format(from, DateFormats.FULL_DATE);
+
+  const rangeOfMeet =
+    format(from, DateFormats.HOURS_MINUTES) + "-" + format(to, DateFormats.HOURS_MINUTES);
+
+  return `${yearOfMeet} ${rangeOfMeet}`;
 };

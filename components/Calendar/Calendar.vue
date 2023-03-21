@@ -7,7 +7,12 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({ selectedDay: { required: true, type: Date } });
+import { IMeeting } from "@/utils/types/Meeting.interfaces";
+
+const props = defineProps({
+  selectedDay: { required: true, type: Date },
+  meetings: { default: Array as PropType<IMeeting[]> },
+});
 const emit = defineEmits(["update:selectedDay"]);
 
 const onSelectedDayUpdate = (newSelectedDay: Date) => {

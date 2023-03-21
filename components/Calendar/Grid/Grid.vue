@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="grid grid-cols-7 p-2 shadow-gray-700 shadow-2xl min-md:border border-slate-300 rounded-md"
+    class="grid grid-cols-7 p-2 shadow-sm shadow-gray-700 min-md:border border-slate-300 rounded-t-md"
   >
     <CalendarHead />
     <CalendarGridItem
@@ -16,7 +16,9 @@
 <script setup lang="ts">
 import { formatISO } from "date-fns";
 
-const props = defineProps({ selectedDay: { required: true, type: Date } });
+const props = defineProps({
+  selectedDay: { required: true, type: Date },
+});
 
 const emit = defineEmits(["update:selectedDay"]);
 

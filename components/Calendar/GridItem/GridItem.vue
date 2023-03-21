@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { format, isSameDay, isSameMonth } from "date-fns";
-import { DateFormats } from "~~/enums/dateFormats";
+import { DateFormats } from "@/utils/enums/dateFormats";
 
 const props = defineProps({
   day: { required: true, type: Date },
@@ -31,7 +31,7 @@ const isMatchesDay = computed(() => isSameDay(props.day, props.selectedDay));
 
 const isCurrentMonth = computed(() => isSameMonth(props.day, props.selectedDay));
 
-const isToday = isSameDay(props.day, new Date());
+const isToday = computed(() => isSameDay(props.day, formatToLondonTime(new Date())));
 
 const isSelectedDayToday = isToday && isMatchesDay;
 

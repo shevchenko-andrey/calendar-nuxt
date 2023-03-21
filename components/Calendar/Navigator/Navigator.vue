@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { add, format, sub } from "date-fns";
-import { DateFormats } from "~~/enums/dateFormats";
+import { DateFormats } from "@/utils/enums/dateFormats";
 
 const props = defineProps({ selectedDay: { required: true, type: Date } });
 const emit = defineEmits(["update:selectedDay"]);
